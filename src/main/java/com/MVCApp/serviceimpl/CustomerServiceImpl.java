@@ -143,11 +143,13 @@ public class CustomerServiceImpl implements CustomerService {
 		List<StateDto> listStates = new ArrayList<StateDto>();
 		// TODO Auto-generated method stub
 		try{
+			
 			List<State> listState = new ArrayList<State>();
 			String query = "select s from State s where s.countryId = "+stateDto.getCountryId();
 			Query queryStr = manager.createQuery(query, State.class);
 			listState = queryStr.getResultList();
 			if(listState != null){
+				//listStates = null;
 				for(State states:listState){
 					//System.out.println("states:"+states.getStateName());
 					listStates.add(convertToDto(states));

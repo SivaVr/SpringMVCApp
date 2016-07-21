@@ -26,7 +26,8 @@ app.controller('CustomerControll', ['$scope','$http', function($scope,$http) {
    });
 	
    $scope.getState = function(country){
-	   console.log(country);
+	   //console.log(country);
+	
 	   $http({
 		   method: 'POST', 
 		   url:'/SpringMVCApp/state.json',
