@@ -12,7 +12,9 @@ public class State {
 	@Id
 	@GeneratedValue
 	@Column(name="STATE_ID")
-	private Long stateId;
+	private Long stateId;	
+	@Column(name="COUNTRY_ID")
+	private Long countryId;
 	@Column(name="STATE_NAME")
 	private String stateName;
 	public Long getStateId() {
@@ -26,6 +28,12 @@ public class State {
 	}
 	public void setStateName(String stateName) {
 		this.stateName = stateName;
+	}
+	public Long getCountryId() {
+		return countryId;
+	}
+	public void setCountryId(Long countryId) {
+		this.countryId = countryId;
 	}
 	
 	

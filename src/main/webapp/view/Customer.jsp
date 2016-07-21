@@ -58,7 +58,7 @@
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}"><strong>Country</strong></label>
                                 <div class="col-md-7">
-                                    <select class="{{app.class.fc}}" name="country"  ng-model="customer.country"   required>
+                                    <select class="{{app.class.fc}}" name="country"  ng-model="customer.country" ng-change = "getState(customer.country)"   required>
                                      
                                         <option ng-repeat="c in countriesStr" ng-selected="{{c.cid == ''}}"   value="{{c.cid}}">{{c.cname}}</option>
                                     </select>
@@ -68,7 +68,7 @@
                                 <label class="{{app.class.l}}" ><strong>State</strong></label>
                                 <div class="col-md-7">
                                     <select class="{{app.class.fc}}" name="state" ng-model="customer.state" required>
-                                        <option value="">-Select-</option>
+                                         <option ng-repeat="s in statesStr" ng-selected="{{s.sid == ''}}"   value="{{s.sid}}">{{s.sname}}</option>
                                     </select>
                                 </div>
                             </div>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.MVCApp.dto.StateDto;
 import com.MVCApp.service.CustomerService;
 
 
@@ -22,10 +23,12 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/state")
-	public String getState(ModelMap model){
+	public String getState(ModelMap model,StateDto stateDto){
+		
+		System.out.println("country id"+stateDto.getCountryId());
             //System.out.println("state inside controller test1");
-	
-		return null;
+		model.addAttribute("states",cutomerService.listState(stateDto));
+		return "states";
 		
 	}
 	@RequestMapping(value="/country")

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.MVCApp.domain.Country;
 import com.MVCApp.domain.Customer;
+import com.MVCApp.domain.State;
 import com.MVCApp.dto.CountryDto;
 import com.MVCApp.dto.CustomerDto;
 import com.MVCApp.dto.StateDto;
@@ -123,7 +124,7 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 		catch(Exception ex){
-			System.out.println("Error while fetching countries"+ex);
+			System.out.println("Error while fetching countries:"+ex);
 		}
 		// TODO Auto-generated method stub
 		return listCountries;
@@ -136,9 +137,36 @@ public class CustomerServiceImpl implements CustomerService {
 			countrydto.setCountryName(countries.getCountryName());
 		return countrydto;
 	} 
-	public List<StateDto> listState() {
+	
+
+	public List<StateDto> listState(StateDto stateDto) {
+		List<StateDto> listStates = new ArrayList<StateDto>();
 		// TODO Auto-generated method stub
-		return null;
+		try{
+			List<State> listState = new ArrayList<State>();
+			String query = "select s from State s where s.countryId = "+stateDto.getCountryId();
+			Query queryStr = manager.createQuery(query, State.class);
+			listState = queryStr.getResultList();
+			if(listState != null){
+				for(State states:listState){
+					//System.out.println("states:"+states.getStateName());
+					listStates.add(convertToDto(states));
+				}
+			}
+		}
+		catch(Exception ex){
+			System.out.println("Error while fetching states:"+ex);
+		}
+		return listStates;
 	}
+	public StateDto convertToDto(State states) {
+		StateDto statedto = new StateDto();
+		if(states.getStateId() != null)
+			statedto.setStateId(states.getStateId());
+		if(states.getStateName() != null)
+			statedto.setStateName(states.getStateName());
+		return statedto;
+	} 
+	
 
 }

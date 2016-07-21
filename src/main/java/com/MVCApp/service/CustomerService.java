@@ -11,5 +11,5 @@ public interface CustomerService {
 //	public String addCustomer(CustomerDto customerDto);
 //	public List<CustomerDto> listCustomer() ;
 	public List<CountryDto> listCountry();
-	public List<StateDto> listState();
+	public List<StateDto> listState(StateDto stateDto);
 }
