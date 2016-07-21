@@ -16,12 +16,12 @@
             <div class="panel panel-cutom">
                 <div class="panel-heading font-bold">Customer Form</div>
                 <div class="panel-body">
-                    <form id="" method="post" class="form-horizontal" action="">
+                    <form id="customerForm" name="customerForm" method="post" class="form-horizontal" action="">
                         <div class="col-md-12">
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}"><strong>Enter Name</strong></label>
                                 <div class="col-md-7">
-                                    <input type="text" class="{{app.class.fc}}" name="customerName" placeholder="Enter Your Name"/>
+                                    <input type="text" class="{{app.class.fc}}" name="customerName" ng-model="customer.customerName" placeholder="Enter Your Name" required/>
                                 </div>
                             </div>                             
                         </div>
@@ -30,13 +30,13 @@
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}"><strong>Address Line 1</strong></label>
                                 <div class="col-md-7">
-                                    <textarea class="{{app.class.fc}}" name="address1" placeholder="Address Line 1"></textarea>
+                                    <textarea class="{{app.class.fc}}" name="address1" ng-model="customer.address1" placeholder="Address Line 1" required></textarea>
                                 </div>
                             </div>
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}"><strong>Address Line 2 </strong></label>
                                 <div class="col-md-7">
-                                    <textarea class="{{app.class.fc}}" name="address2" placeholder="Address Line 2"></textarea>
+                                    <textarea class="{{app.class.fc}}" name="address2" ng-model="customer.address2" placeholder="Address Line 2"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -44,13 +44,13 @@
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}"><strong>Address Line 3</strong></label>
                                 <div class="col-md-7">
-                                    <textarea class="{{app.class.fc}}" name="address3" placeholder="Address Line 3"></textarea>
+                                    <textarea class="{{app.class.fc}}" name="address3" ng-model="customer.address3" placeholder="Address Line 3"></textarea>
                                 </div>
                             </div>
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}" ><strong>Place</strong></label>
                                 <div class="col-md-7">
-                                    <input type="text" class="{{app.class.fc}}" name="place" placeholder="Place"/>
+                                    <input type="text" class="{{app.class.fc}}" name="place" ng-model="customer.place" placeholder="Place" required/>
                                 </div>
                             </div>
                         </div>
@@ -58,15 +58,16 @@
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}"><strong>Country</strong></label>
                                 <div class="col-md-7">
-                                    <select class="{{app.class.fc}}" name="country">
-                                        <option value="">-Select-</option>
+                                    <select class="{{app.class.fc}}" name="country"  ng-model="customer.country"   required>
+                                     
+                                        <option ng-repeat="c in countriesStr" ng-selected="{{c.cid == ''}}"   value="{{c.cid}}">{{c.cname}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}" ><strong>State</strong></label>
                                 <div class="col-md-7">
-                                    <select class="{{app.class.fc}}" name="state">
+                                    <select class="{{app.class.fc}}" name="state" ng-model="customer.state" required>
                                         <option value="">-Select-</option>
                                     </select>
                                 </div>
@@ -76,13 +77,13 @@
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}"><strong>City</strong></label>
                                 <div class="col-md-7">
-                                    <input type="text" class="{{app.class.fc}}" name="city" placeholder="City"/>                                      
+                                    <input type="text" class="{{app.class.fc}}" name="city" ng-model="customer.city" placeholder="City" required/>                                      
                                 </div>
                             </div>
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}" ><strong>Pin</strong></label>
                                 <div class="col-md-7">
-                                    <input type="text" class="{{app.class.fc}}" name="pin" placeholder="PIN"/>
+                                    <input type="text" class="{{app.class.fc}}" name="pin" ng-model="customer.pin" placeholder="PIN" required/>
                                 </div>
                             </div>
                         </div>
@@ -90,19 +91,19 @@
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}"><strong>Phone</strong></label>
                                 <div class="col-md-7">
-                                    <input type="text" class="{{app.class.fc}}" name="phone" placeholder="Phone"/>                                      
+                                    <input type="text" class="{{app.class.fc}}" name="phone" ng-model="customer.phone" placeholder="Phone" required/>                                      
                                 </div>
                             </div>
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}" ><strong>Email</strong></label>
                                 <div class="col-md-7">
-                                    <input type="text" class="{{app.class.fc}}" name="email" placeholder="Email"/>
+                                    <input type="text" class="{{app.class.fc}}" name="email" ng-model="customer.email" placeholder="Email" required/>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12"> 
                             <div class="col-md-offset-6 col-md-6">
-                                <input type="submit" class="btn btn-primary" value="Save">                         
+                                <input type="button" ng-disabled="customerForm.$invalid" ng-click="addCustomer()" class="btn btn-primary" value="Save">                         
                                 <input type="reset" class="btn btn-default" value="Clear"> 
                             </div>
                         </div>

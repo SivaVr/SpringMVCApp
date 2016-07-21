@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.MVCApp.viewresolver.JsonViewResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,7 @@ public class ViewConfiguration extends WebMvcConfigurerAdapter {
 		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
 		// Define all possible view resolvers
 		resolvers.add(jspViewResolver());
-		//resolvers.add(jsonViewResolver());
+		resolvers.add(jsonViewResolver());
 		//resolvers.add(pdfViewResolver());
 		//resolvers.add(excelViewResolver());
 		//resolvers.add(jaxb2MarshallingXmlViewResolver());
@@ -74,10 +75,10 @@ public class ViewConfiguration extends WebMvcConfigurerAdapter {
 	 /* Configure View resolver to provide JSON output using JACKSON library to
 	 * convert object in JSON format.
 	 */
-//	@Bean
-//	public ViewResolver jsonViewResolver(){
-//		return new JsonViewResolver();
-//	}
+	@Bean
+	public ViewResolver jsonViewResolver(){
+		return new JsonViewResolver();
+	}
 	@Bean
 	public ViewResolver htmlViewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
