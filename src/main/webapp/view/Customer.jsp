@@ -97,8 +97,9 @@
                             <div class="{{app.class.fg}}">
                                 <label class="{{app.class.l}}" ><strong>Email</strong></label>
                                 <div class="col-md-7">
-                                    <input type="text" class="{{app.class.fc}}" name="email" ng-model="customer.email" placeholder="Email" required/>
+                                    <input type="email" class="{{app.class.fc}}" name="email" ng-model="customer.email" placeholder="Email" required/>
                                 </div>
+                              
                             </div>
                         </div>
                         <div class="col-md-12"> 
@@ -106,6 +107,9 @@
                                 <input type="button" ng-disabled="customerForm.$invalid" ng-click="addCustomer(customer)" class="btn btn-primary" value="Save">                         
                                 <input type="reset" class="btn btn-default" value="Clear"> 
                             </div>
+                                          <div class="col-md-offset-6 col-md-6">
+                              <span class="text-danger" ng-show="customerForm.email.$error.email">Invalid Email ID</span>
+                              </div>
                         </div>
                      
                     </form>

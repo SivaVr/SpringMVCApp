@@ -94,9 +94,10 @@ app.controller('CustomerControll', ['$scope','$http', function($scope,$http) {
 			   email:customer.email,
 		   },
 	   }).then(function successCallback(response){
-		   console.log(response.data.customer);
+		   $scope.customerForm = {};
+		   //console.log(response.data.customer);
 		   if(response.data.customer){
-			   
+			  
 		   }
 	   },
 	   function errorCallback(response){

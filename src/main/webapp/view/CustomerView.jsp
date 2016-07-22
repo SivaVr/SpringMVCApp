@@ -10,7 +10,7 @@
 				<div class="panel-heading font-bold">Customer Details</div>
 				<div class="panel-body">
 					<div class="table-responsive" >
-						<table ui-jq="dataTable" class="table table-striped m-b-none table-bordered" style="overflow-x: auto;overflow-y: auto;border-collapse: collapse;">
+						<table ui-jq="dataTable" class="table table-striped m-b-none table-bordered">
 							<thead>
 								<tr>
 									<th style="width: 10%">#</th>

@@ -45,6 +45,16 @@ angular.module('app')
             		  }]
             	  }
               })
+              .state('app.vechile',{
+            	  url:'/VechileEntry',
+            		  templateUrl:'view/Vechile.jsp',
+            		  resolve:{
+            			  deps:['$ocLazyLoad',
+            			        function($ocLazyLoad){
+            				  	return $ocLazyLoad.load(['js/controllers/VechileControll.js']);
+            			  }]
+            		  }            	  
+              })
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',
                   templateUrl: 'tpl/app_dashboard_v1.html',

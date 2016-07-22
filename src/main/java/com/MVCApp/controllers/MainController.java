@@ -47,9 +47,10 @@ public class MainController {
 		return "customer";
 	}
 	@RequestMapping(value="/viewCustomer")
-	public String addCustomer(ModelMap model){
+	public String getCustomerView(ModelMap model){
 		
 		model.addAttribute("customerList",cutomerService.listCustomer());
 		return "customerList";
 	}
+	
 }
