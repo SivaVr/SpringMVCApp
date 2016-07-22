@@ -9,7 +9,9 @@ app.controller('CustomerControll', ['$scope','$http', function($scope,$http) {
 	                       {cid:'',cname:'-Select-'}
 	                      ];
 	  $scope.statesStr = [];
-	
+	  
+	  $scope.customerList = [];
+	//country load
 	$http({
 		  method: 'POST',
 		  url:'/SpringMVCApp/country.json'
@@ -24,6 +26,32 @@ app.controller('CustomerControll', ['$scope','$http', function($scope,$http) {
 			  console.log("error while calling country json"+response.data);
 		  
    });
+ //customer add
+	$http({
+		  method: 'POST',
+		  url:'/SpringMVCApp/viewCustomer.json'
+		}).then(function successCallback(response) {	
+			//console.log(response.data.customerList)
+				for(var i=0;i< response.data.customerList.length;i++){					
+					 $scope.customerList.push({
+					        cid: response.data.customerList[i].customerId,
+					        cname: response.data.customerList[i].customerName,
+					        address:response.data.customerList[i].address1+"\n"+response.data.customerList[i].address2+"\n"+response.data.customerList[i].address3,
+					        city:response.data.customerList[i].city,
+					        country:response.data.customerList[i].countryName,
+					        state:response.data.customerList[i].stateName,
+					        place:response.data.customerList[i].place,
+					        pin:response.data.customerList[i].pin,
+					        phone:response.data.customerList[i].phone,
+					        email:response.data.customerList[i].email
+					    });
+				}		
+			//console.log( $scope.customerList)
+		  }, function errorCallback(response) {
+			  console.log("error while calling countryview json"+response.data);
+		  
+ });
+	
 	
    $scope.getState = function(country){
 	   //console.log(country);
@@ -46,6 +74,33 @@ app.controller('CustomerControll', ['$scope','$http', function($scope,$http) {
 	   },function errorCallback(response){
 		   console.log("error while calling states json"+response.data);
 	   
+	   });
+   }
+   $scope.addCustomer = function(customer){
+	   $http({
+		   method:'POST',
+		   url:'/SpringMVCApp/addCustomer.json',
+		   params:{
+			   customerName:customer.customerName,
+			   address1:customer.address1,
+			   address2:customer.address2,
+			   address3:customer.address3,
+			   place:customer.place,
+			   country:customer.country,
+			   state:customer.state,
+			   city:customer.city,
+			   pin:customer.pin,
+			   phone:customer.phone,
+			   email:customer.email,
+		   },
+	   }).then(function successCallback(response){
+		   console.log(response.data.customer);
+		   if(response.data.customer){
+			   
+		   }
+	   },
+	   function errorCallback(response){
+		   console.log(response.data);
 	   });
    }
 	

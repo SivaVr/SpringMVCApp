@@ -8,8 +8,8 @@ import com.MVCApp.dto.StateDto;
 
 public interface CustomerService {
 
-//	public String addCustomer(CustomerDto customerDto);
-//	public List<CustomerDto> listCustomer() ;
+	public String addCustomer(CustomerDto customerDto);
+	public List<CustomerDto> listCustomer() ;
 	public List<CountryDto> listCountry();
 	public List<StateDto> listState(StateDto stateDto);
 }

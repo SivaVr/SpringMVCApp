@@ -37,27 +37,83 @@ public class CustomerServiceImpl implements CustomerService {
  @PersistenceContext
  private EntityManager manager;
    
-//	public String addCustomer(CustomerDto customerDto) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	public List<CustomerDto> listCustomer() {
-//		List<CustomerDto> listCustomers = new ArrayList<CustomerDto>();
-//		// TODO Auto-generated method stub
-//		try{
-////			List<Customer> listCustomer = customerRepository.findAll();
-//			if(listCustomer != null){
-//				for(Customer list:listCustomer){
-//					listCustomers.add(convertToDto(list));
-//				}
-//			}
-//		}
-//		catch(Exception ex){
-//			System.out.println("Error fetching customer"+ex);
-//		}
-//		return listCustomers;
-//	}
+	public String addCustomer(CustomerDto customerDto) {
+		// TODO Auto-generated method stub
+		String status = "false";
+		
+		Customer customer = null;
+		try{
+			customer = convertToEntity(customerDto);
+			customerRepository.save(customer);
+			status = "true";
+		}
+		catch(Exception ex){
+			System.out.println("Error While adding customer:"+ex);
+		}
+		return status;
+	}
+
+	public List<CustomerDto> listCustomer() {
+		List<CustomerDto> listCustomers = new ArrayList<CustomerDto>();
+		// TODO Auto-generated method stub
+		try{
+			List<Customer> listCustomer = customerRepository.findAll();
+			if(listCustomer != null){
+				for(Customer list:listCustomer){
+					listCustomers.add(convertToDto(list));
+				}
+			}
+		}
+		catch(Exception ex){
+			System.out.println("Error fetching customer"+ex);
+		}
+		return listCustomers;
+	}
+	private Customer convertToEntity(CustomerDto customerDto){
+	
+		Customer customer = new Customer();
+		
+		if(customerDto.getCustomerName() != null){
+			customer.setCustomerName(customerDto.getCustomerName());
+		}
+		if(customerDto.getAddress1() != null){
+			customer.setAddress1(customerDto.getAddress1());
+		}
+		if(customerDto.getAddress2() != null){
+			customer.setAddress2(customerDto.getAddress2());
+		}
+		if(customerDto.getAddress3() != null){
+			customer.setAddress3(customerDto.getAddress3());
+		}
+		if(customerDto.getPlace() != null){
+			customer.setPlace(customerDto.getPlace());
+		}
+		if(customerDto.getCountry() != null){
+			
+			customer.setCountry(customerDto.getCountry());
+			
+		}
+		if(customerDto.getState() != null){
+			customer.setState(customerDto.getState());
+		}
+		if(customerDto.getCity() != null){
+			customer.setCity(customerDto.getCity());
+		}
+		if(customerDto.getPin() != null){
+			customer.setPin(customerDto.getPin());
+		}
+		if(customerDto.getPhone() != null){
+			customer.setPhone(customerDto.getPhone());
+		}
+		if(customerDto.getEmail() != null){
+			customer.setEmail(customerDto.getEmail());
+		}
+		
+		
+		return customer;
+		
+	}
+	
 	private CustomerDto convertToDto(Customer customer){
 		String countryName = null;
 		String stateName = null;
@@ -83,10 +139,13 @@ public class CustomerServiceImpl implements CustomerService {
 		if(customer.getCountry() != null){
 			countryName = countryRepository.findOne(customer.getCountry()).getCountryName();
 			customerDto.setCountry(customer.getCountry());
-			customerDto.setCustomerName(countryName);
+			customerDto.setCountryName(countryName);
 		}
 		if(customer.getState() != null){
+			//System.out.println(customer.getState());
+			stateName = stateRepository.findOne(customer.getState()).getStateName();
 			customerDto.setState(customer.getState());
+			customerDto.setStateName(stateName);
 		}
 		if(customer.getCity() != null){
 			customerDto.setCity(customer.getCity());

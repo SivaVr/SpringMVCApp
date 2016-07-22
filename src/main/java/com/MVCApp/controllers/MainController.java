@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.MVCApp.dto.CustomerDto;
 import com.MVCApp.dto.StateDto;
 import com.MVCApp.service.CustomerService;
 
@@ -16,7 +17,7 @@ public class MainController {
 	@Autowired 
 	CustomerService cutomerService;
 	@RequestMapping(value="/")
-	public String mainPage(ModelMap model){
+	public String mainPage(){
             System.out.println("controller test");
 		return "index";
 		
@@ -38,5 +39,17 @@ public class MainController {
 		//model.addAttribute("cust",cutomerService.listCustomer());
 		//model.addAttribute("country",cutomerService.listCustomer());
 		return "countries";
+	}
+	@RequestMapping(value="/addCustomer")
+	public String addCustomer(ModelMap model,CustomerDto customerDto){
+		
+		model.addAttribute("customer",cutomerService.addCustomer(customerDto));
+		return "customer";
+	}
+	@RequestMapping(value="/viewCustomer")
+	public String addCustomer(ModelMap model){
+		
+		model.addAttribute("customerList",cutomerService.listCustomer());
+		return "customerList";
 	}
 }

@@ -103,7 +103,7 @@
                         </div>
                         <div class="col-md-12"> 
                             <div class="col-md-offset-6 col-md-6">
-                                <input type="button" ng-disabled="customerForm.$invalid" ng-click="addCustomer()" class="btn btn-primary" value="Save">                         
+                                <input type="button" ng-disabled="customerForm.$invalid" ng-click="addCustomer(customer)" class="btn btn-primary" value="Save">                         
                                 <input type="reset" class="btn btn-default" value="Clear"> 
                             </div>
                         </div>

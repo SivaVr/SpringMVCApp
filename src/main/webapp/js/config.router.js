@@ -35,6 +35,16 @@ angular.module('app')
                     }]
                   }
               })
+              .state('app.customerMis',{
+            	  url:'/CustomerView',
+            	  templateUrl:'view/CustomerView.jsp',
+            	  resolve:{
+            		  deps:['$ocLazyLoad',
+            		        function($ocLazyLoad){
+            			  		return $ocLazyLoad.load(['js/controllers/CustomerControll.js']);
+            		  }]
+            	  }
+              })
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',
                   templateUrl: 'tpl/app_dashboard_v1.html',
