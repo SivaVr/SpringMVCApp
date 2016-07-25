@@ -41,7 +41,7 @@ public class ViewConfiguration extends WebMvcConfigurerAdapter {
 			registry.addResourceHandler("/psd/**").addResourceLocations("/psd/**");
 			registry.addResourceHandler("/tpl/**").addResourceLocations("/tpl/**");
 			registry.addResourceHandler("/vendor/**").addResourceLocations("/vendor/**");
-			
+//			
 	}
 	
 	/*

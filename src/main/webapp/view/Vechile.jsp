@@ -20,6 +20,14 @@
 					 				</select>
 					 			</div>
 					 		</div>
+					 		<div class="{{app.class.fg}}">
+					 			<label class="{{app.class.l}}"><strong>Vechile Type</strong></label>
+					 			<div class="col-md-7">
+					 				<select class="{{app.class.fc}}" ng-model="vechile.cname" name = "cname">
+					 				   <option ng-repeat="c in customerName" ng-selected="{{c.cid == ''}}"   value="{{c.cid}}">{{c.cname}}</option>
+					 				</select>
+					 			</div>
+					 		</div>
 					 	</div>
 					 </form>
 				</div>
