@@ -13,9 +13,9 @@
 <div class="wrapper-md" ng-controller="CustomerControll">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-cutom">
+            <div class="panel {{app.settings.asideColor}}">
                 <div class="panel-heading font-bold">Customer Form</div>
-                <div class="panel-body">
+                <div class="panel-body {{app.settings.navbarCollapseColor}}">
                     <form id="customerForm" name="customerForm" method="post" class="form-horizontal" action="">
                         <div class="col-md-12">
                             <div class="{{app.class.fg}}">

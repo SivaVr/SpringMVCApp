@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 app.controller('CustomerControll', ['$scope','$http', function($scope,$http) {
-        
+        console.log("CustomerControll");
 	$scope.countriesStr = [
 	                       {cid:'',cname:'-Select-'}
 	                      ];
 	  $scope.statesStr = [];
 	  
 	  $scope.customerList = [];
+	  $scope.statesStr.push (
+	                       {sid:'',sname:'-Select-'}
+	                      );
 	//country load
 	$http({
 		  method: 'POST',
@@ -61,16 +64,14 @@ app.controller('CustomerControll', ['$scope','$http', function($scope,$http) {
 		   url:'/SpringMVCApp/state.json',
 		   params:{countryId:country},
 	   }).then(function successCallback(response){
-		   $scope.statesStr = [
-		                       {sid:'',sname:'-Select-'}
-		                      ];
+		   $scope.statesStr = [{sid:'',sname:'-Select-'}];
 		   for(var i=0;i< response.data.states.length;i++){					
 				 $scope.statesStr.push({
 				        sid: response.data.states[i].stateId,
 				        sname: response.data.states[i].stateName
 				    });
 			}	
-		   
+		   console.log($scope.statesStr);
 	   },function errorCallback(response){
 		   console.log("error while calling states json"+response.data);
 	   

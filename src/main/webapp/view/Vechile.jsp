@@ -7,9 +7,9 @@
 <div class="wrapper-md" ng-controller="VechileControll">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="panel panel-cutom">
+			<div class="panel {{app.settings.asideColor}}">
 				<div class="panel-heading font-bold">Vechile Form</div>
-				<div class="panel-body">
+				<div class="panel-body {{app.settings.navbarCollapseColor}}">
 					 <form id="vechileForm" name="vechileForm" method="post" class="form-horizontal" action="">
 					 	<div class="col-md-12">
 					 		<div class="{{app.class.fg}}">

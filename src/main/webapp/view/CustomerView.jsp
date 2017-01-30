@@ -6,9 +6,9 @@
 <div class="wrapper-md" ng-controller="CustomerControll">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="panel panel-cutom">
+			<div class="panel {{app.settings.asideColor}}">
 				<div class="panel-heading font-bold">Customer Details</div>
-				<div class="panel-body">
+				<div class="panel-body {{app.settings.navbarCollapseColor}}">
 					<div class="table-responsive" >
 						<table ui-jq="dataTable" class="table table-striped m-b-none table-bordered">
 							<thead>
